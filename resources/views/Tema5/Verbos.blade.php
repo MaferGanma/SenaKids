@@ -83,7 +83,7 @@
             </iframe>
         </div>
         <div class="footer">
-            <p>¡Es hora de movernos! Aprende los verbos y pronombres más importantes con divertidas acciones.</p>
+            <p>¡Es hora de movernos! Aprende los verbos más importantes con señas.</p>
         </div>
     </div>
 </body>

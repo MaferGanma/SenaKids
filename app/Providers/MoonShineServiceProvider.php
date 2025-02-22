@@ -255,7 +255,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 )->icon('heroicons.outline.puzzle-piece'),
             ])->icon('heroicons.user-group'),
 
-            MenuGroup::make('Verbos y Pronombres', [
+            MenuGroup::make('Los Verbos', [
                 MenuItem::make(
                     'Diversión en Pantalla',
                     ViewPage::make(title: 'Diversión en Pantalla', alias: 'verbos-pronombres')

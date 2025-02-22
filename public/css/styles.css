@@ -71,7 +71,7 @@
 
 .item2 {
     grid-area: 3 / 3 / 4 / 4;
-    background-image: url('/images/img-1.png');
+    background-image: url('/images/Tema5_Verbos/CardVerbos.jpg');
 }
 /*Desafio del Aprendizaje*/
 .item3 {
@@ -86,7 +86,7 @@
 
 .item5 {
     grid-area: 2 / 4 / 3 / 5;
-    background-image: url('/images/Tema3_Colores/CardColors.jpg');
+    background-image: url('/images/Tema3_Colores/CardPaint.jpg');
 }
 
 .item6 {
@@ -96,7 +96,7 @@
 /*Alimentos y Bebidas*/
 .item7 {
     grid-area: 3 / 4 / 5 / 5;
-    background-image: url('/images/Tema6_Alimentos/CardAlimentos.jpg');
+    background-image: url('/images/Tema6_Alimentos/CardAlimentos2.jpg');
 }
 /*Los Numeros*/
 .item8 {
@@ -111,12 +111,12 @@
 /*Semana*/
 .item10 {
     grid-area: 3 / 5 / 4 / 6;
-    background-image: url('/images/card1.jpg');
+    background-image: url('/images/Tema7_Dias/CardDays.jpg');
 }
 /*Trabajos*/
 .item11 {
     grid-area: 4 / 5 / 5 / 6;
-    background-image: url('/images/card1.jpg'); /* Imagen de fondo para card 11 */
+    background-image: url('/images/Tema8_Trabajos/CardJob2.jpg'); /* Imagen de fondo para card 11 */
 }
 
 .content {

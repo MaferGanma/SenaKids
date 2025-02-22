@@ -1,3 +1,4 @@
+/* ESTILOS PARA LAS TARJETAS DE LOS JUEGOS */
 :root {
   --card-height: 300px;
   --card-width: calc(var(--card-height) / 1.5);
@@ -9,7 +10,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background: #191c29;
+  /* background: #191c29; */
   height: 100vh;
   width: 100%;
   padding: 20px;
