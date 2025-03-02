@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\MoonShine\Resources;
 
 
-use App\Models\Paralelo;
+use App\Models\Curso;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Request;
 use MoonShine\Resources\ModelResource;
@@ -17,11 +17,11 @@ use MoonShine\Fields\Select;
 use MoonShine\Fields\Text;
 
 
-class ParaleloResource extends ModelResource
+class CursoResource extends ModelResource
 {
-    protected string $model = Paralelo::class;
+    protected string $model = Curso::class;
 
-    protected string $title = 'Colegio/Paralelo';
+    protected string $title = 'Colegio/Curso';
 
     protected bool $createInModal = true;
     protected bool $editInModal = true;
@@ -44,13 +44,13 @@ class ParaleloResource extends ModelResource
         return [
             Block::make([
                 ID::make()->sortable(),
-                Text::make('Nombre paralelo', 'nombre'),
+                Text::make('Nombre curso', 'nombre'),
 
-                // Usamos Select para relacionar con el modelo Curso
-                Select::make('Curso', 'curso_id')
-                ->options(\App\Models\Curso::pluck('nombre', 'id')->toArray()) // Convertimos la colección a un array
-                ->searchable()
-                ->required(),
+                // // Usamos Select para relacionar con el modelo Curso
+                // Select::make('Curso', 'curso_id')
+                // ->options(\App\Models\Curso::pluck('nombre', 'id')->toArray()) // Convertimos la colección a un array
+                // ->searchable()
+                // ->required(),
             ]),
         ];
     }

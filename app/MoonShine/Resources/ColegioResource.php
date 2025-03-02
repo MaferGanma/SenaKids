@@ -20,7 +20,7 @@ class ColegioResource extends ModelResource
 {
     protected string $model = Colegio::class;
 
-    protected string $title = 'Colegios/Colegio';
+    protected string $title = 'Colegio/Colegio';
 
     protected bool $createInModal = true;
     protected bool $editInModal = true;

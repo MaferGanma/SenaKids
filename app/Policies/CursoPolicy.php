@@ -2,18 +2,19 @@
 
 namespace App\Policies;
 
-use App\Models\Paralelo;
+use App\Models\Curso;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class ParaleloPolicy
+class CursoPolicy
 {
+
     public function viewAny(User $user): bool
     {
         return true;
     }
 
-    public function view(User $user, Paralelo $paralelo): bool
+    public function view(User $user, Curso $curso): bool
     {
         return true;
     }
@@ -23,22 +24,22 @@ class ParaleloPolicy
         return true;
     }
 
-    public function update(User $user, Paralelo $paralelo): bool
+    public function update(User $user, Curso $curso): bool
     {
         return true;
     }
 
-    public function delete(User $user, Paralelo $paralelo): bool
+    public function delete(User $user, Curso $curso): bool
     {
         return true;
     }
 
-    public function restore(User $user, Paralelo $paralelo): bool
+    public function restore(User $user, Curso $curso): bool
     {
         return true;
     }
 
-    public function forceDelete(User $user, Paralelo $paralelo): bool
+    public function forceDelete(User $user, Curso $curso): bool
     {
         return true;
     }
