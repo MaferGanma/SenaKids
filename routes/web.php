@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JuegoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,4 +29,9 @@ Route::get('/juego', function () {
 
 Route::get('/final', function () {
     return view('Desafio_Aprendizaje.final'); // Vista de resultado final
+});
+
+
+Route::controller(JuegoController::class)->group(function(){
+    Route::post('/guardar-puntaje', 'guardarPuntaje');
 });

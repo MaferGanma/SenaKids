@@ -4,6 +4,7 @@ const num_parejas = document.querySelector('.container h2 span')
 let tar_1, tar_2, deshabilitarCartas = false;
 let parejas = 0;
 let intentos = 0;
+const maxIntentos = 16;
 
 let sonidos = document.querySelector('#sonidos')
 let fondo = document.querySelector('#fondo')
@@ -21,7 +22,6 @@ const sonidoDeFondo = (e) =>{
 }
 
 escuchar.addEventListener('click', sonidoDeFondo)
-
 
 sonidos.play
 
@@ -56,9 +56,7 @@ const sonIguales = (imagen1, imagen2) => {
         num_parejas.innerHTML = parejas;
 
         if (parejas === 8) {
-            // sonidos.src = 'sounds/victoria.mp3';
             sonidos.src = window.location.origin + "/sounds/victoria.mp3";
-
             sonidos.volume = 0.3;
             sonidos.play();
 
@@ -90,11 +88,9 @@ const sonIguales = (imagen1, imagen2) => {
     }, 1500);
 };
 
-// Opción 1: Modificar la función reiniciarJuego para no iniciar el audio automáticamente
 const reiniciarJuego = () => {
     fondo.src = window.location.origin + "/sounds/musica.mp3";
     fondo.volume = 0.1;
-    // No reproducir automáticamente aquí
 
     intentos = 0;
     parejas = 0;
@@ -115,15 +111,12 @@ const reiniciarJuego = () => {
     });
 }
 
-// Opción 2: Crear un botón de inicio que active el juego y la música
 document.addEventListener('DOMContentLoaded', () => {
-    // Añadir un botón o pantalla de inicio al HTML
-    const startButton = document.getElementById('startButton'); // Debes crear este botón en tu HTML
+    const startButton = document.getElementById('startButton');
 
     if (startButton) {
         startButton.addEventListener('click', () => {
             reiniciarJuego();
-            // Ahora sí podemos reproducir el audio porque hubo interacción
             fondo.play().catch(error => {
                 console.log("Error al reproducir audio:", error);
             });
@@ -131,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Opción 3: Reproducir música con el primer clic en cualquier parte
 let primerInteraccion = true;
 document.addEventListener('click', () => {
     if (primerInteraccion) {
@@ -140,19 +132,22 @@ document.addEventListener('click', () => {
         });
         primerInteraccion = false;
     }
-}, { once: true }); // 'once: true' hace que el evento solo se active una vez
+}, { once: true });
 
 reiniciarJuego()
 cards.forEach(tarjeta => {
-    // tarjeta.classList.remove("vuelta")
     tarjeta.addEventListener('click', darVuelta)
 })
 
-// funciones modal
-
 const mostrarResultados = () => {
+    // Calcular la calificación
+    const calificacion = calcularCalificacion(intentos, maxIntentos);
+
+    // Mostrar el resultado en el modal
     document.getElementById("modalResultados").style.display = "flex";
-    document.getElementById("totalIntentos").innerText = intentos;
+    document.getElementById("totalIntentos").innerText = `Puntaje: ${calificacion} puntos`;
+
+    guardarPuntaje(calificacion);
 };
 
 const cerrarModal = () => {
@@ -169,4 +164,41 @@ document.getElementById("btnSiguiente").addEventListener("click", () => {
     alert("Aquí puedes redirigir a otra fase del juego.");
 });
 
+const calcularCalificacion = (intentos, maxIntentos) => {
+    const intentosIdeales = maxIntentos; // Mínimo de intentos para puntaje máximo
+    let calificacion = 100;
+    console.log(calificacion)
+    console.log(intentos)
 
+    //15/15
+    if (intentos > intentosIdeales) {
+        const penalizacion = (intentos - intentosIdeales) * 10; // Restar 10 puntos por cada intento extra
+        calificacion -= penalizacion;
+    }
+
+    // Asegurarse de que la calificación no sea menor que 0
+    return Math.max(calificacion, 0);
+}
+
+const guardarPuntaje = (calificacion) => {
+    const nombreUsuario = 'Jugador1'; // Aquí debes obtener el nombre del jugador o lo que sea necesario
+
+    fetch('/guardar-puntaje', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'), // CSRF token
+        },
+        body: JSON.stringify({
+            nombre_usuario: nombreUsuario,
+            calificacion: calificacion,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Puntaje guardado:', data);
+    })
+    .catch(error => {
+        console.error('Error al guardar el puntaje:', error);
+    });
+};

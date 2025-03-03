@@ -11,6 +11,7 @@
     />
   </head>
   <body>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="container">
         <div class="floating-stars">
             <span class="star" style="top:10%; left:5%;">✨</span>
