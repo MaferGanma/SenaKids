@@ -1,0 +1,50 @@
+[
+    {
+         "src": "/images/memograma/1.jpg",
+         "default" : "/images/memograma/cover.jpg"
+    },
+    {
+         "src": "/images/memograma/1.jpg",
+         "default" : "/images/memograma/cover.jpg"
+    },
+    {
+         "src": "/images/memograma/2.jpg",
+         "default" : "/images/memograma/cover.jpg"
+    },
+    {
+         "src": "/images/memograma/2.jpg",
+         "default" : "/images/memograma/cover.jpg"
+    },
+    {
+         "src": "/images/memograma/3.jpg",
+         "default" : "/images/memograma/cover.jpg"
+    },
+    {
+         "src": "/images/memograma/3.jpg",
+         "default" : "/images/memograma/cover.jpg"
+    },
+    {
+         "src": "/images/memograma/4.jpg",
+         "default" : "/images/memograma/cover.jpg"
+    },
+    {
+         "src": "/images/memograma/4.jpg",
+         "default" : "/images/memograma/cover.jpg"
+    },
+    {
+         "src": "/images/memograma/5.jpg",
+         "default" : "/images/memograma/cover.jpg"
+    },
+    {
+         "src": "/images/memograma/5.jpg",
+         "default" : "/images/memograma/cover.jpg"
+    },
+    {
+         "src": "/images/memograma/6.jpg",
+         "default" : "/images/memograma/cover.jpg"
+    },
+    {
+         "src": "/images/memograma/6.jpg",
+         "default" : "/images/memograma/cover.jpg"
+    }
+]

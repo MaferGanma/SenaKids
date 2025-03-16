@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JuegoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -29,6 +30,7 @@ Route::get('/juego', function () {
 Route::get('/final', function () {
     return view('Desafio_Aprendizaje.final'); // Vista de resultado final
 });
+
 
 Route::get('/tema1/juego1', function () {
     return view('Tema1.Juego1Tema1');  // Apunta a la vista 
@@ -65,3 +67,8 @@ Route::get('/tema7/quizz', function () {
 Route::get('/tema8/quizz', function () {
     return view('Tema8.MiniQuizz8');  // Vista creada en resources/views/Tema1/MiniQuizz1.blade.php
 });
+
+Route::controller(JuegoController::class)->group(function(){
+    Route::post('/guardar-puntaje', 'guardarPuntaje');
+});
+

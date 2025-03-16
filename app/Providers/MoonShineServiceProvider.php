@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Providers;
 
+use App\MoonShine\Resources\ColegioResource;
+use App\MoonShine\Resources\CursoResource;
+use App\MoonShine\Resources\ParaleloResource;
 use App\MoonShine\Resources\PlayerResource;
 use App\MoonShine\Resources\TeamResource;
 use MoonShine\Providers\MoonShineApplicationServiceProvider;
@@ -26,7 +29,9 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
      */
     protected function resources(): array
     {
-        return [];
+        return [
+            new \App\MoonShine\Resources\ColegioResource(),
+        ];
     }
 
     /**
@@ -52,12 +57,27 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     static fn() => __('moonshine::ui.resource.role_title'),
                     new MoonShineUserRoleResource()
                 ),
+                 MenuItem::make(
+                    static fn() => __('moonshine::ui.resource.role_title'),
+                    new MoonShineUserRoleResource()
+                ),
             ]),
 
             MenuDivider::make(),
 
             MenuItem::make('Cursos/Paralelos', new TeamResource)->icon('heroicons.list-bullet'),
-            //MenuItem::make('Curso', new TeamResource)->icon('heroicons.outline.flag'),
+            //MenuItem::make('Colegios', new ColegioResource)->icon('heroicons.list-bullet'),
+            MenuGroup::make('Gestión Académica', [
+                MenuItem::make('Colegios', new ColegioResource)
+                    ->icon('heroicons.list-bullet'),
+
+                MenuItem::make('Paralelos', new ParaleloResource)
+                    ->icon('heroicons.outline.swatch'),
+
+                MenuItem::make('Curso', new CursoResource)
+                    ->icon('heroicons.outline.swatch'),
+            ])->icon('heroicons.academic-cap'),
+
             MenuItem::make('Estudiantes', new PlayerResource)->icon('heroicons.user'),
             //(Amo esto<3) Una nueva Pestaña:
             //MenuItem::make('Title', ViewPage::make()->setTitle('hello')),
@@ -67,6 +87,12 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                 ->setContentView(contentView: 'home')
                 ->setBreadcrumbs([
                     '#' => 'Inicio'
+                ]))->icon('heroicons.home'),
+
+                MenuItem::make('Memograma', ViewPage::make(title: 'Memograma', alias: 'memo')
+                ->setContentView(contentView: 'memograma')
+                ->setBreadcrumbs([
+                    '#' => 'Memograma'
                 ]))->icon('heroicons.home'),
 
             MenuDivider::make(),
@@ -417,7 +443,7 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
 
             MenuDivider::make(),
             // MenuItem::make('¡Desafío del Aprendizaje!', new PlayerResource)->icon('heroicons.academic-cap'),
-            
+
             MenuItem::make(
                 '¡Desafío del Aprendizaje!',
                 ViewPage::make(title: '¡Desafío del Aprendizaje!', alias: 'desafio-aprendizaje')
@@ -425,8 +451,8 @@ class MoonShineServiceProvider extends MoonShineApplicationServiceProvider
                     ->setBreadcrumbs([
                         '#' => 'Desafío del Aprendizaje'
                     ])
-            )->icon('heroicons.academic-cap'),            
-            /* 
+            )->icon('heroicons.academic-cap'),
+            /*
             MenuItem::make('¡Desafío del Aprendizaje!', ViewPage::make(title: 'Desafío del Aprendizaje', alias: 'desafio-aprendizaje')
     ->setContentView(contentView: 'Prueba.DesafioAprendizaje') // Puedes agregar el archivo de vista que corresponda
     ->setBreadcrumbs([
