@@ -37,10 +37,10 @@ class Dashboard extends Page
         $totalTeams = Team::count();
 		return [
             Grid::make([
-                ValueMetric::make('Players Count')
+                ValueMetric::make('Estudiantes Registrados')
                     ->value($totalPlayers)
                     ->icon('heroicons.user'),
-                ValueMetric::make('Teams Count')
+                ValueMetric::make('Cursos Registrados')
                     ->value($totalTeams)
                     ->icon('heroicons.users'),
             ])

@@ -1,4 +1,4 @@
-/* El contenedor sigue igual */
+/* TARJETAS MAGICAS */
 .container {
     background-image: linear-gradient(to top right, #8B5CF6, #EC4899);
     min-height: 93vh;
@@ -10,9 +10,9 @@
     padding-top: 33px; /* Aquí aumentamos el espacio desde la parte superior */
     border-radius: 15px;
     overflow: hidden;
-    /* Centrear Contenido */
     margin-left: auto; /* Centrado horizontal */
     margin-right: auto; /* Centrado horizontal */
+    min-height: 100vh;
 }
 
 /* El slider reducido pero aún grande */
@@ -87,24 +87,29 @@
     right: 30px; /* Ajustamos la posición del botón derecho */
 }
 
+/* --------------------- MEDIOS QUERIES PARA DISPOSITIVOS MOVILES --------------------- */
 
-
-/* Media Queries para pantallas más pequeñas */
+/* Para dispositivos móviles y pantallas más pequeñas */
 @media (max-width: 768px) {
+    .container {
+        padding-top: 10px; /* Menos espacio superior */
+        min-height: 90vh; /* Ajustamos la altura del contenedor */
+    }
+
     .slider {
-        width: 90%; /* Ajustamos el ancho del slider a un 90% */
-        justify-content: center;
-        height: 700px; /* Reducimos la altura del slider */
+        width: 90%; /* Aumentamos el tamaño del slider para pantallas más pequeñas */
+        height: 400px; /* Reducimos la altura */
     }
 
     .item {
-        width: 80%; /* Reducimos el ancho de cada item al 80% */
-        height: 500px; /* Reducimos la altura del item */
-        padding: 15px; /* Reducimos el padding */
+        width: 90%; /* Los items ocupan más espacio en pantallas más pequeñas */
+        height: auto; /* Dejamos que la altura se ajuste automáticamente */
+        left: 5%; /* Centramos los items con un margen */
+        padding: 15px; /* Reducimos el padding dentro de cada item */
     }
 
     .item img {
-        height: 80%; /* Ajustamos la imagen para que ocupe menos altura */
+        height: 70%; /* Ajustamos la imagen para que no ocupe tanto espacio */
     }
 
     .item h1 {
@@ -116,37 +121,41 @@
     }
 
     #next, #prev {
-        font-size: 40px; /* Reducimos el tamaño de los botones */
+        font-size: 35px; /* Reducimos el tamaño de los botones de navegación */
+        top: 35%; /* Ajustamos la posición de los botones */
     }
 }
 
-/* Media Queries para pantallas muy pequeñas (móviles) */
+/* Para pantallas más pequeñas como teléfonos más compactos */
 @media (max-width: 480px) {
+    .container {
+        min-height: 80vh; /* Reducimos la altura del contenedor */
+    }
+
     .slider {
-        width: 200%; /* El slider ocupará el 95% del ancho de la pantalla */
-        height: 700px; /* Reducimos aún más la altura */
-        justify-content: left;
+        min-height: 500px; /* Reducimos aún más la altura del slider */
     }
 
     .item {
-        width: 90%; /* Reducimos el ancho de cada item al 90% */
-        height: 400px; /* Ajustamos la altura */
-        padding: 10px; /* Reducimos más el padding */
+        width: 100%; /* Los items ocupan el 100% del ancho */
+        min-height: 100%; /* Ajustamos la altura para que se adapte */
+        left: 0; /* Centramos los items */
     }
 
     .item img {
-        height: 75%; /* Reducimos la altura de la imagen */
+        height: 60%; /* Hacemos que las imágenes ocupen menos espacio */
     }
 
     .item h1 {
-        font-size: 18px; /* Reducimos más el tamaño del título */
+        font-size: 18px; /* Reducimos aún más el tamaño del título */
     }
 
     .item p {
-        font-size: 12px; /* Reducimos el tamaño del texto */
+        font-size: 12px; /* Reducimos aún más el tamaño del texto */
     }
 
     #next, #prev {
-        font-size: 35px; /* Reducimos más el tamaño de los botones */
+        font-size: 30px; /* Botones más pequeños */
+        top: 25%; /* Ajustamos la posición de los botones */
     }
 }
